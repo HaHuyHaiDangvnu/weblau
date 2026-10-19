@@ -40,28 +40,31 @@ def render_styles(completed: bool = False) -> None:
             display: none !important;
         }}
         .block-container {{
-            max-width: 1100px;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
+            width: 100%;
+            max-width: none;
+            padding: 2rem clamp(1rem, 3vw, 3rem);
         }}
         .game-title {{
             color: #ffffff !important;
             text-align: center;
-            font-size: clamp(1.6rem, 4vw, 2.6rem);
+            font-size: clamp(2rem, 4.5vw, 3.8rem);
             font-weight: 800;
+            line-height: 1.15;
             margin: 0;
         }}
         .game-subtitle {{
             color: #eff6ff !important;
             text-align: center;
-            margin: .5rem 0 1.5rem;
+            font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+            margin: .75rem 0 2rem;
         }}
         .st-key-game-panel {{
+            width: 100%;
             background: #ffffff !important;
             color: #172b4d !important;
-            border: 2px solid #7dd3fc !important;
-            border-radius: 14px !important;
-            padding: 1.25rem !important;
+            border: 3px solid #7dd3fc !important;
+            border-radius: 20px !important;
+            padding: clamp(1.25rem, 3vw, 2.5rem) !important;
         }}
         .st-key-game-panel h1,
         .st-key-game-panel h2,
@@ -70,6 +73,24 @@ def render_styles(completed: bool = False) -> None:
         .st-key-game-panel label,
         .st-key-game-panel [data-testid="stMarkdownContainer"] {{
             color: #172b4d !important;
+        }}
+        .st-key-game-panel h2 {{
+            font-size: clamp(1.8rem, 2.5vw, 2.5rem) !important;
+        }}
+        .st-key-game-panel [data-testid="stMarkdownContainer"] p {{
+            font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+        }}
+        .st-key-game-panel [data-testid="stProgressBar"] {{
+            min-height: .9rem;
+        }}
+        .st-key-game-panel [data-testid="stProgressBar"] > div {{
+            min-height: .9rem;
+        }}
+        .st-key-game-panel [data-testid="stProgressBar"] p {{
+            font-size: 1.1rem !important;
+        }}
+        .st-key-game-panel [data-testid="stAlert"] {{
+            font-size: 1.15rem;
         }}
         .st-key-game-panel [data-testid="stAlert"] p {{
             color: inherit !important;
@@ -87,6 +108,20 @@ def render_styles(completed: bool = False) -> None:
         div.st-key-reset-game button p {{
             background: {BUTTON_BACKGROUND} !important;
             color: #ffffff !important;
+        }}
+        .st-key-game-panel div.st-key-reset-game {{
+            display: flex;
+            justify-content: center;
+            width: min(20rem, 100%) !important;
+            margin: 0 auto !important;
+        }}
+        div.st-key-reset-game button {{
+            min-height: 3.75rem;
+            font-size: 1.25rem;
+        }}
+        .st-key-game-panel div.st-key-reset-game button {{
+            width: 100% !important;
+            min-width: 16rem;
         }}
         """
     ]
@@ -139,12 +174,14 @@ def render_styles(completed: bool = False) -> None:
             div.st-key-cell-{index} button {{
                 background: {cell_background} !important;
                 color: #ffffff !important;
-                border: 2px solid {border} !important;
-                min-height: 3rem;
+                border: 3px solid {border} !important;
+                min-height: clamp(3.75rem, 7vh, 5rem);
+                font-size: clamp(1.25rem, 1.8vw, 1.75rem);
                 font-weight: 800;
             }}
             div.st-key-cell-{index} button p {{
                 color: #ffffff !important;
+                font-size: inherit !important;
             }}
             div.st-key-cell-{index} button:hover,
             div.st-key-cell-{index} button:focus {{
@@ -173,10 +210,12 @@ def render_styles(completed: bool = False) -> None:
                 background: {background} !important;
                 color: #ffffff !important;
                 border: 1px solid {background} !important;
-                min-height: 5rem;
+                min-height: clamp(6rem, 12vh, 9rem);
                 white-space: normal;
                 height: auto;
-                padding: .75rem;
+                padding: clamp(1rem, 1.8vw, 1.75rem);
+                font-size: clamp(1.1rem, 1.45vw, 1.45rem);
+                line-height: 1.4;
                 font-weight: 600;
             }}
             div.st-key-choice-{index} button p {{
@@ -184,6 +223,8 @@ def render_styles(completed: bool = False) -> None:
                 white-space: normal !important;
                 overflow: visible !important;
                 text-overflow: clip !important;
+                font-size: inherit !important;
+                line-height: inherit !important;
             }}
             div.st-key-choice-{index} button:hover,
             div.st-key-choice-{index} button:focus {{
@@ -313,7 +354,7 @@ def render_game() -> None:
             elif cell_index in st.session_state.revealed:
                 st.info("Câu này đã được trả lời đúng. Bạn có thể làm lại câu này.")
 
-        if st.button("Chơi lại", key="reset-game", use_container_width=True):
+        if st.button("Chơi lại", key="reset-game"):
             restart_game()
             st.rerun()
 
