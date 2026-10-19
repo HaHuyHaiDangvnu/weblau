@@ -1,7 +1,5 @@
-Ảnh chúc mừng mặc định hiển thị toàn màn hình khi trả lời đúng tất cả câu hỏi
-là chuc_mung_20_10.png. Ảnh được co/cắt vừa khung trình chiếu và giữ tỷ lệ.
+Ảnh chúc mừng hiển thị khi trả lời đúng tất cả câu hỏi là
+chuc_mung_20_10.png.
 
-Để thay ảnh mặc định lâu dài, thay file trên bằng ảnh PNG khác và giữ nguyên
-tên file. Có thể chọn ảnh khác trong màn hình chúc mừng bằng nút "Chọn ảnh";
-ảnh được chọn theo cách này chỉ áp dụng trong phiên chơi hiện tại. Cài Pillow
-trước khi chạy bằng lệnh: python -m pip install -r requirements.txt
+Để thay ảnh mặc định, thay file trên bằng ảnh PNG khác và giữ nguyên tên file.
+Người chơi cũng có thể tải ảnh riêng lên sau khi hoàn thành trò chơi.
