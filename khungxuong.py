@@ -210,21 +210,22 @@ def render_styles(completed: bool = False) -> None:
                 background: {background} !important;
                 color: #ffffff !important;
                 border: 1px solid {background} !important;
-                min-height: clamp(6rem, 12vh, 9rem);
+                min-height: clamp(7.5rem, 15vh, 10rem);
                 white-space: normal;
                 height: auto;
-                padding: clamp(1rem, 1.8vw, 1.75rem);
-                font-size: clamp(1.1rem, 1.45vw, 1.45rem);
+                padding: clamp(1rem, 1.6vw, 1.5rem);
+                font-size: clamp(1.2rem, 1.6vw, 1.6rem);
                 line-height: 1.4;
                 font-weight: 600;
             }}
-            div.st-key-choice-{index} button p {{
+            div.st-key-choice-{index} button [data-testid="stMarkdownContainer"] p {{
                 color: #ffffff !important;
                 white-space: normal !important;
                 overflow: visible !important;
                 text-overflow: clip !important;
-                font-size: inherit !important;
-                line-height: inherit !important;
+                font-size: clamp(1.2rem, 1.6vw, 1.6rem) !important;
+                line-height: 1.4 !important;
+                margin: 0 !important;
             }}
             div.st-key-choice-{index} button:hover,
             div.st-key-choice-{index} button:focus {{
